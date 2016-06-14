@@ -11,7 +11,7 @@
 `gulpfile.js`:
 
 ```js
-var gulp = require('gulp')
+var gulp = require('gulp');
 var straticPostsToIndex = require('stratic-posts-to-index');
 
 gulp.task('post-index', function() {
