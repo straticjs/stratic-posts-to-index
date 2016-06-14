@@ -16,7 +16,7 @@ var straticPostsToIndex = require('stratic-posts-to-index');
 
 gulp.task('post-index', function() {
     gulp.src('*.md')
-        .pipe(straticParseHeader());
+        .pipe(straticPostsToIndex());
 });
 ```
 
