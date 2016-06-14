@@ -1,0 +1,26 @@
+{
+  "name": "stratic-posts-to-index",
+  "version": "1.0.0",
+  "description": "Prepare Vinyl files with indexes of a stream of Stratic posts",
+  "main": "index.js",
+  "dependencies": {
+    "through2": "^2.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strugee/stratic-posts-to-index.git"
+  },
+  "keywords": [
+    "stratic",
+    "gulpplugin"
+  ],
+  "author": "Alex Jordan <alex@strugee.net>",
+  "license": "LGPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/strugee/stratic-posts-to-index/issues"
+  },
+  "homepage": "https://github.com/strugee/stratic-posts-to-index"
+}
