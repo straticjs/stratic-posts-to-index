@@ -4,7 +4,9 @@
   "description": "Prepare Vinyl files with indexes of a stream of Stratic posts",
   "main": "index.js",
   "dependencies": {
-    "through2": "^2.0.1"
+    "end-of-stream": "^1.1.0",
+    "through2": "^2.0.1",
+    "vinyl-fs": "^2.4.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
