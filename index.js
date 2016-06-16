@@ -17,15 +17,13 @@
 
 var through2 = require('through2');
 var eos = require('end-of-stream');
-var vfs = require('vinyl-fs');
+var gutil = require('gulp-util');
 
 module.exports = function(template, options) {
 	if (typeof template !== 'string') throw new Error('template not specified');
 
-	// Open template stream early for read performance
-	var templateStream = vfs.src(template);
-
 	var files = [];
+	var templateFile;
 	var that;
 	var callback;
 
@@ -44,7 +42,12 @@ module.exports = function(template, options) {
 	var stream = through2.obj(function(file, enc, _callback) {
 		that = this;
 
-		files.push(file);
+		// Check if the file is the template file
+		if (file.relative === template) {
+			templateFile = file;
+		} else {
+			files.push(file);
+		}
 
 		callback = _callback;
 	});
