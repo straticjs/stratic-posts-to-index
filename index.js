@@ -47,6 +47,7 @@ module.exports = function(template, options) {
 		// Main index
 		var mainIndexFile = templateFile.clone();
 		mainIndexFile.data.posts = files;
+		mainIndexFile.indexType = 'main';
 		this.push(mainIndexFile);
 
 		// Years
@@ -66,6 +67,7 @@ module.exports = function(template, options) {
 			var yearStr = year.toString();
 
 			file.path = path.join(file.base, yearStr, file.relative);
+			file.indexType = 'year';
 
 			this.push(file);
 		}, this);
@@ -100,6 +102,7 @@ module.exports = function(template, options) {
 				monthStr = monthStr < 10 ? '0' + monthStr.toString() : monthStr.toString();
 
 				file.path = path.join(file.base, yearStr, monthStr, file.relative);
+				file.indexType = 'month';
 
 				this.push(file);
 			}, this);
