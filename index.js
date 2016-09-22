@@ -52,19 +52,36 @@ module.exports = function(template, options) {
 
 		templateFile.data = templateFile.data || {};
 
-		// Main index
-		var mainIndexFile = templateFile.clone();
-		mainIndexFile.data.posts = files;
-		mainIndexFile.data.posts.sort(sortChronological);
-		mainIndexFile.data.indexType = 'main';
-		this.push(mainIndexFile);
-
-		// Years
+		// Find years
 		var years = [];
 		files.forEach(function(post) {
 			var year = new Date(post.time.epoch * 1000).getFullYear();
 			if (!years.includes(year)) years.push(year);
 		});
+
+		// Find months
+		// Map keys are years that posts have been authored in, value is array of months in that year
+		var months = new Map();
+		files.forEach(function(post) {
+			var date = new Date(post.time.epoch * 1000);
+			var year = date.getFullYear();
+			var month = date.getMonth();
+
+			if (!months.get(year)) months.set(year, []);
+
+			if (!months.get(year).includes(month)) months.get(year).push(month);
+		});
+
+		// Output main index
+		var mainIndexFile = templateFile.clone();
+		mainIndexFile.data.posts = files;
+		mainIndexFile.data.posts.sort(sortChronological);
+		mainIndexFile.data.indexType = 'main';
+		mainIndexFile.data.includedYears = years;
+		mainIndexFile.data.includedMonths = months;
+		this.push(mainIndexFile);
+
+		// Output years
 
 		years.forEach(function(year) {
 			var file = templateFile.clone();
@@ -78,23 +95,13 @@ module.exports = function(template, options) {
 
 			file.path = path.join(file.base, yearStr, file.relative);
 			file.data.indexType = 'year';
+			file.data.includedMonths = months.get(year);
 			file.data.year = year;
 
 			this.push(file);
 		}, this);
 
-		// Months
-		// Map keys are years that posts have been authored in, value is array of months in that year
-		var months = new Map();
-		files.forEach(function(post) {
-			var date = new Date(post.time.epoch * 1000);
-			var year = date.getFullYear();
-			var month = date.getMonth();
-
-			if (!months.get(year)) months.set(year, []);
-
-			if (!months.get(year).includes(month)) months.get(year).push(month);
-		});
+		// Output months
 
 		months.forEach(function(monthsInYear, year) {
 			monthsInYear.forEach(function(month) {
