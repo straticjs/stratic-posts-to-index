@@ -68,6 +68,7 @@ module.exports = function(template, options) {
 
 			file.path = path.join(file.base, yearStr, file.relative);
 			file.indexType = 'year';
+			file.year = year;
 
 			this.push(file);
 		}, this);
@@ -103,6 +104,8 @@ module.exports = function(template, options) {
 
 				file.path = path.join(file.base, yearStr, monthStr, file.relative);
 				file.indexType = 'month';
+				file.year = year;
+				file.month = month;
 
 				this.push(file);
 			}, this);
