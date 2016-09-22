@@ -24,24 +24,9 @@ module.exports = function(template, options) {
 
 	var files = [];
 	var templateFile;
-	var that;
-	var callback;
-
-	var attachFiles = through2.obj(function(file, enc, _callback) {
-		file.data = file.data || {};
-		file.data.posts = files;
-
-		console.log('Pushing file:', file.inspect());
-
-		that.push(file);
-
-		_callback();
-	});
 
 	// For each file that comes through, add it to an array
-	var stream = through2.obj(function(file, enc, _callback) {
-		that = this;
-
+	var stream = through2.obj(function(file, enc, callback) {
 		// Check if the file is the template file
 		if (file.relative === template) {
 			templateFile = file;
@@ -49,14 +34,16 @@ module.exports = function(template, options) {
 			files.push(file);
 		}
 
-		callback = _callback;
-	});
+		callback();
+	},
+	// Wait until all files have come through, then attach the non-template files
+	function(callback) {
+		if (!templateFile) throw new Error('template not found in stream');
 
-	// Wait until all files have come through, then pipe to the attacher
-	eos(stream, function(err) {
-		if (err) throw err;
+		templateFile.data = templateFile.data || {};
+		templateFile.data.posts = files;
 
-		templateStream.pipe(attachFiles);
+		this.push(templateFile);
 
 		callback();
 	});
