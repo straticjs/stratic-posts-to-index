@@ -58,6 +58,7 @@ module.exports = function(template, options) {
 			var year = new Date(post.time.epoch * 1000).getFullYear();
 			if (!years.includes(year)) years.push(year);
 		});
+		years.sort();
 
 		// Find months
 		// Map keys are years that posts have been authored in, value is array of months in that year
@@ -70,6 +71,9 @@ module.exports = function(template, options) {
 			if (!months.get(year)) months.set(year, []);
 
 			if (!months.get(year).includes(month)) months.get(year).push(month);
+		});
+		months.forEach(function(year) {
+			year.sort();
 		});
 
 		// Output main index
