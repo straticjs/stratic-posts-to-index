@@ -21,6 +21,14 @@ var through2 = require('through2');
 var eos = require('end-of-stream');
 var gutil = require('gulp-util');
 
+function sortChronological(a, b) {
+	           	if (a.time.epoch === b.time.epoch) {
+	           		return 0;
+	           	}
+
+	           	return a.time.epoch < b.time.epoch ? 1 : -1;
+}
+
 module.exports = function(template, options) {
 	if (typeof template !== 'string') throw new Error('template not specified');
 
@@ -47,6 +55,7 @@ module.exports = function(template, options) {
 		// Main index
 		var mainIndexFile = templateFile.clone();
 		mainIndexFile.data.posts = files;
+		mainIndexFile.data.posts.sort(sortChronological);
 		mainIndexFile.data.indexType = 'main';
 		this.push(mainIndexFile);
 
@@ -63,6 +72,7 @@ module.exports = function(template, options) {
 			file.data.posts = files.filter(function(post) {
 				return year === new Date(post.time.epoch * 1000).getFullYear();
 			});
+			file.data.posts.sort(sortChronological);
 
 			var yearStr = year.toString();
 
@@ -97,6 +107,7 @@ module.exports = function(template, options) {
 
 					return year === postYear && month === postMonth;
 				});
+				file.data.posts.sort(sortChronological);
 
 				var yearStr = year.toString();
 				var monthStr = month + 1;
