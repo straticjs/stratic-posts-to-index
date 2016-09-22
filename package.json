@@ -4,7 +4,6 @@
   "description": "Prepare Vinyl files with indexes of a stream of Stratic posts",
   "main": "index.js",
   "dependencies": {
-    "end-of-stream": "^1.1.0",
     "es7-array.prototype.includes": "^1.0.1",
     "gulp-util": "^3.0.7",
     "through2": "^2.0.1"
