@@ -76,6 +76,15 @@ module.exports = function(template, options) {
 			year.sort();
 		});
 
+		// Find categories
+		var categories = [];
+		files.forEach(function(post) {
+			post.categories.forEach(function(category) {
+				if (!categories.includes(category)) categories.push(category);
+			});
+		});
+		categories.sort();
+
 		// Output main index
 		var mainIndexFile = templateFile.clone();
 		mainIndexFile.data.posts = files;
@@ -83,6 +92,7 @@ module.exports = function(template, options) {
 		mainIndexFile.data.indexType = 'main';
 		mainIndexFile.data.includedYears = years;
 		mainIndexFile.data.includedMonths = months;
+		mainIndexFile.data.includedCategories = categories;
 		this.push(mainIndexFile);
 
 		// Output years
@@ -133,8 +143,20 @@ module.exports = function(template, options) {
 			}, this);
 		}, this);
 
-		// Categories
-		// TODO
+		// Output categories
+		categories.forEach(function(category) {
+			var file = templateFile.clone();
+
+			file.data.posts = files.filter(function(post) {
+				return post.categories.includes(category);
+			});
+			file.data.posts.sort(sortChronological);
+
+			file.path = path.join(file.base, 'category', category, file.relative);
+			file.data.indexType = 'category';
+
+			this.push(file);
+		}, this);
 
 		callback();
 	});
