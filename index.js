@@ -154,6 +154,7 @@ module.exports = function(template, options) {
 
 			file.path = path.join(file.base, 'category', category, file.relative);
 			file.data.indexType = 'category';
+			file.data.category = category;
 
 			this.push(file);
 		}, this);
