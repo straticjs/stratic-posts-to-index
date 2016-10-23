@@ -57,6 +57,26 @@ When we pipe all the files to `postsToIndex`, we pass it the name of the templat
 
 The rest is just standard Gulp: we render the Jade, rename the templates to `.html` files, and write to the `dist` directory.
 
+## Locals
+
+Each template file gets some information as an object in its `data` attribute. Most template system plugins will use this object as locals for the template being rendered.
+
+`posts` (`Array`) - the posts that should be included in that particular index, presorted in reverse-chronological order
+
+`indexType` (`String`) - the type of index this is. The value will be one of `main`, `year`, `month`, or `category`.
+
+`includedYears` (`Array`) - years that the posts included in the index were authored in (set for `main` indexes)
+
+`includedMonths` (`Array`) - months that the posts included in the index were authored in (set for `main` and `year` indexes)
+
+`includedCategories` (`Array`) - categories that the posts included in the index were categorized as (set for `main`, `year` and `month` indexes)
+
+`year` (`Number`) - the year that the index is for (set for `year` and `month` indexes)
+
+`month` (`Number`) - the (zero-based) month that the index is for (set for `month` indexes)
+
+`category` (`String`) - the category that the index is for (set for `category` indexes)
+
 ## License
 
 LGPL 3.0+
