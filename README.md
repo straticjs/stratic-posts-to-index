@@ -1,5 +1,7 @@
 # `stratic-posts-to-index`
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/straticjs/stratic-posts-to-index.svg)](https://greenkeeper.io/)
+
 [Gulp][1] plugin to prepare Vinyl files with indexes of a stream of [Stratic][2] posts
 
 ## Installation
