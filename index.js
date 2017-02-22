@@ -18,8 +18,6 @@
 var path = require('path');
 if (!Array.prototype.includes) require('es7-array.prototype.includes');
 var through2 = require('through2');
-var eos = require('end-of-stream');
-var gutil = require('gulp-util');
 
 function sortChronological(a, b) {
 	           	if (a.time.epoch === b.time.epoch) {
