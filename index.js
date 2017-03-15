@@ -20,11 +20,11 @@ if (!Array.prototype.includes) require('es7-array.prototype.includes');
 var through2 = require('through2');
 
 function sortChronological(a, b) {
-	           	if (a.time.epoch === b.time.epoch) {
-	           		return 0;
-	           	}
+			if (a.data.time.epoch === b.data.time.epoch) {
+				return 0;
+			}
 
-	           	return a.time.epoch < b.time.epoch ? 1 : -1;
+			return a.data.time.epoch < b.data.time.epoch ? 1 : -1;
 }
 
 module.exports = function(template, options) {
@@ -53,7 +53,7 @@ module.exports = function(template, options) {
 		// Find years
 		var years = [];
 		files.forEach(function(post) {
-			var year = new Date(post.time.epoch * 1000).getFullYear();
+			var year = new Date(post.data.time.epoch * 1000).getFullYear();
 			if (!years.includes(year)) years.push(year);
 		});
 		years.sort();
@@ -62,7 +62,7 @@ module.exports = function(template, options) {
 		// Map keys are years that posts have been authored in, value is array of months in that year
 		var months = new Map();
 		files.forEach(function(post) {
-			var date = new Date(post.time.epoch * 1000);
+			var date = new Date(post.data.time.epoch * 1000);
 			var year = date.getFullYear();
 			var month = date.getMonth();
 
@@ -77,7 +77,7 @@ module.exports = function(template, options) {
 		// Find categories
 		var categories = [];
 		files.forEach(function(post) {
-			post.categories.forEach(function(category) {
+			post.data.categories.forEach(function(category) {
 				if (!categories.includes(category)) categories.push(category);
 			});
 		});
@@ -99,7 +99,7 @@ module.exports = function(template, options) {
 			var file = templateFile.clone();
 
 			file.data.posts = files.filter(function(post) {
-				return year === new Date(post.time.epoch * 1000).getFullYear();
+				return year === new Date(post.data.time.epoch * 1000).getFullYear();
 			});
 			file.data.posts.sort(sortChronological);
 
@@ -120,7 +120,7 @@ module.exports = function(template, options) {
 				var file = templateFile.clone();
 
 				file.data.posts = files.filter(function(post) {
-					var date = new Date(post.time.epoch * 1000);
+					var date = new Date(post.data.time.epoch * 1000);
 					var postYear = date.getFullYear();
 					var postMonth = date.getMonth();
 
@@ -146,7 +146,7 @@ module.exports = function(template, options) {
 			var file = templateFile.clone();
 
 			file.data.posts = files.filter(function(post) {
-				return post.categories.includes(category);
+				return post.data.categories.includes(category);
 			});
 			file.data.posts.sort(sortChronological);
 
