@@ -2,6 +2,12 @@
 
 `stratic-posts-to-index` follows [Semantic Versioning][1].
 
+## 2.0.0 - 2017-03-14
+
+### Breaking
+
+* Post data is expected to be on `file.data`, not `file` (straticjs/RFCs#2)
+
 ## 1.0.1 - 2017-02-21
 
 ### Improved
