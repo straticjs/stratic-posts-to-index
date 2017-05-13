@@ -77,6 +77,12 @@ Each template file gets some information as an object in its `data` attribute. M
 
 `category` (`String`) - the category that the index is for (set for `category` indexes)
 
+## Code of Conduct
+
+Please note that StraticJS is developed under the [Contributor Covenant][3] Code of Conduct. Project contributors are expected to respect these terms.
+
+For the full Code of Conduct, see [CODE_OF_CONDUCT.md][4]. Violations may be reported to <alex@strugee.net>.
+
 ## License
 
 LGPL 3.0+
@@ -87,3 +93,5 @@ Alex Jordan <alex@strugee.net>
 
  [1]: http://gulpjs.com/
  [2]: https://github.com/strugee/generator-stratic
+ [3]: http://contributor-covenant.org/
+ [4]: https://github.com/straticjs/stratic-posts-to-index/blob/master/CODE_OF_CONDUCT.md
