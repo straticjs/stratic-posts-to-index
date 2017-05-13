@@ -18,7 +18,7 @@ var addsrc = require('gulp-add-src');
 var straticDateInPath = require('stratic-date-in-path');
 
 gulp.task('post-index', function() {
-	return gulp.src(*.md')
+	return gulp.src('*.md')
 	           .pipe(parseStratic())
 	           .pipe(straticDateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
@@ -39,7 +39,7 @@ var jade = require('gulp-jade');
 var straticDateInPath = require('stratic-date-in-path');
 
 gulp.task('post-index', function() {
-	return gulp.src(*.md')
+	return gulp.src('*.md')
 	           .pipe(parseStratic())
 	           .pipe(remark().use(remarkHtml))
 	           .pipe(straticDateInPath())
