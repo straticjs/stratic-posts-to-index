@@ -12,14 +12,14 @@ Minimal example:
 
 ```js
 var gulp = require('gulp');
-var parseStratic = require('stratic-parse-header');
+var frontMatter = require('gulp-gray-matter');
 var straticPostsToIndex = require('stratic-posts-to-index');
 var addsrc = require('gulp-add-src');
 var straticDateInPath = require('stratic-date-in-path');
 
 gulp.task('post-index', function() {
 	return gulp.src('*.md')
-	           .pipe(parseStratic())
+	           .pipe(frontMatter())
 	           .pipe(straticDateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
 	           .pipe(postsToIndex('index.jade'))
@@ -32,7 +32,7 @@ Full example:
 var gulp = require('gulp');
 var remark = require('gulp-remark');
 var remarkHtml = require('remark-html');
-var parseStratic = require('stratic-parse-header');
+var frontMatter = require('gulp-gray-matter');
 var straticPostsToIndex = require('stratic-posts-to-index');
 var addsrc = require('gulp-add-src');
 var jade = require('gulp-jade');
@@ -40,7 +40,7 @@ var straticDateInPath = require('stratic-date-in-path');
 
 gulp.task('post-index', function() {
 	return gulp.src('*.md')
-	           .pipe(parseStratic())
+	           .pipe(frontMatter())
 	           .pipe(remark().use(remarkHtml))
 	           .pipe(straticDateInPath())
 	           .pipe(addsrc('index.jade'))
