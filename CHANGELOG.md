@@ -2,6 +2,12 @@
 
 `stratic-posts-to-index` follows [Semantic Versioning][1].
 
+## 2.0.1 - 2017-06-28
+
+### Fixed
+
+* Fixed some errors in the README's examples
+
 ## 2.0.0 - 2017-03-14
 
 ### Breaking
