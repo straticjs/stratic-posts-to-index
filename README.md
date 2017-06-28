@@ -37,6 +37,7 @@ var straticPostsToIndex = require('stratic-posts-to-index');
 var addsrc = require('gulp-add-src');
 var jade = require('gulp-jade');
 var straticDateInPath = require('stratic-date-in-path');
+var rename = require('gulp-rename');
 
 gulp.task('post-index', function() {
 	return gulp.src('*.md')
