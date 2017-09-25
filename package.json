@@ -1,6 +1,6 @@
 {
   "name": "stratic-posts-to-index",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Prepare Vinyl files with indexes of a stream of Stratic posts",
   "main": "index.js",
   "dependencies": {
