@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "es7-array.prototype.includes": "^2.0.0",
+    "stratic-handle-offset": "^1.0.0",
     "through2": "^2.0.1"
   },
   "scripts": {
