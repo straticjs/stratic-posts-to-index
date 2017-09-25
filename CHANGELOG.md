@@ -2,6 +2,12 @@
 
 `stratic-posts-to-index` follows [Semantic Versioning][1].
 
+## 2.1.0 - 2017-09-24
+
+### Fixed
+
+* UTC offsets are now properly handled (straticjs/RFCs#28)
+
 ## 2.0.0 - 2017-03-14
 
 ### Breaking
