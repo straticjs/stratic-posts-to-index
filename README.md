@@ -22,7 +22,7 @@ gulp.task('post-index', function() {
 	           .pipe(frontMatter())
 	           .pipe(straticDateInPath())
 	           .pipe(addsrc('src/blog/index.jade'))
-	           .pipe(postsToIndex('index.jade'))
+	           .pipe(straticPostsToIndex('index.jade'))
 });
 ```
 
@@ -45,7 +45,7 @@ gulp.task('post-index', function() {
 	           .pipe(remark().use(remarkHtml))
 	           .pipe(straticDateInPath())
 	           .pipe(addsrc('index.jade'))
-	           .pipe(postsToIndex('index.jade'))
+	           .pipe(straticPostsToIndex('index.jade'))
 	           .pipe(jade({basedir: __dirname}))
 	           .pipe(rename({ extname: '.html' }))
 	           .pipe(gulp.dest('dist'));
@@ -90,7 +90,7 @@ LGPL 3.0+
 
 ## Author
 
-Alex Jordan <alex@strugee.net>
+AJ Jordan <alex@strugee.net>
 
  [1]: http://gulpjs.com/
  [2]: https://github.com/strugee/generator-stratic
