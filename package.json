@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/strugee/stratic-posts-to-index.git"
+    "url": "https://github.com/straticjs/stratic-posts-to-index.git"
   },
   "keywords": [
     "stratic",
@@ -22,7 +22,7 @@
   "author": "AJ Jordan <alex@strugee.net>",
   "license": "LGPL-3.0+",
   "bugs": {
-    "url": "https://github.com/strugee/stratic-posts-to-index/issues"
+    "url": "https://github.com/straticjs/stratic-posts-to-index/issues"
   },
-  "homepage": "https://github.com/strugee/stratic-posts-to-index"
+  "homepage": "https://github.com/straticjs/stratic-posts-to-index"
 }
